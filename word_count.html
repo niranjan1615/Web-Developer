@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+</head>
+<style>
+    *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-size: 65%;
+}
+body{
+    background: linear-gradient(#5d69be,#c89feb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+main{
+    border-radius: 15px;
+    background-color: white;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 20px 5px rgb(62, 37, 98);
+}
+.text{
+    height: 200px;
+    width: 90%;
+    margin: 3rem;
+    transform: translateY(-20px);
+    font-size: 1.5rem;
+    resize: none;
+    padding: 10px 6px;
+    border: none;
+    outline: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.boxes{
+    border-radius: 13px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 180px;
+    transform: translateY(70px);
+    gap: 1rem;
+}
+.box{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    transform: translateY(-5px);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.box::before{
+    content: attr(data-text);
+    color: rgba(199, 195, 195, 0.874);
+    position: absolute;
+    height: 10px;
+    width: 50px;
+    font-size: 0.9rem;
+    transform: translateY(15px);
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+</style>
+<body>
+    <main>
+        <textarea name="" class="text" cols="30" rows="10"></textarea>
+        <div class="boxes">
+            <p class="words box" data-text="words">0</p>
+            <p class="characters box" data-text="characters">0</p>
+        </div>
+    </main>
+    <script>
+
+        var text=document.querySelector('.text')
+        var words=document.querySelector('.words')
+        var characters=document.querySelector('.characters')
+
+        text.addEventListener('input', () =>{
+            characters.textContent = text.value.length
+            var txt = text.value.trim()
+            words.textContent = txt.split(/\s+/).filter((item) => item).length
+        })
+
+    </script>
+</body>
+</html>
